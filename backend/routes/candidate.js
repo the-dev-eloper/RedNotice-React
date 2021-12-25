@@ -71,16 +71,16 @@ candidateRouter.put(`/:id`, async (req, res) => {
 candidateRouter.delete(`/:id`, (req, res) => {
 
     Candidate.findByIdAndRemove(req.params.id)
-    .then((deletedCandidate) => {
-        if(deletedCandidate) {
-            return res.status(201).json({ success: true, message: 'Deleted Successfully' })
-        } else {
-            return res.status(404).json({ success: false, message: 'Candidate not found' })
-        }
-    })
-    .catch((err) => {
-        return res.status(400).json({ success: false, error: err })
-    })
+        .then((deletedCandidate) => {
+            if(deletedCandidate) {
+                return res.status(201).json({ success: true, message: 'Deleted Successfully' })
+            } else {
+                return res.status(404).json({ success: false, message: 'Candidate not found' })
+            }
+        })
+        .catch((err) => {
+            return res.status(400).json({ success: false, error: err })
+        })
 });
 
 module.exports = candidateRouter;

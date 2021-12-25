@@ -17,8 +17,10 @@ app.use(morgan('tiny'));
 
 // Routes
 const candidateRouter = require('./routes/candidate');
+const userRouter = require('./routes/user');
 
 app.use(`${api}/candidates`, candidateRouter);
+app.use(`${api}/users`, userRouter);
 
 // Database
 mongoose.connect(process.env.MONGODB_URL,{
