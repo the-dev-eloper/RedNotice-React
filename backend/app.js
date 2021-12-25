@@ -8,6 +8,7 @@ const cors = require('cors');
 const candidateRouter = require('./routes/candidate');
 const userRouter = require('./routes/user');
 const authJWT = require('./helpers/jwt');
+const errorHandler = require('./helpers/error-handler');
 
 const app = express();
 const api = process.env.API_URL;
@@ -19,9 +20,9 @@ app.options('*', cors())
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(authJWT());
+app.use(errorHandler);
 
 // Routes
-
 app.use(`${api}/candidates`, candidateRouter);
 app.use(`${api}/users`, userRouter);
 
